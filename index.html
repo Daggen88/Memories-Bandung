@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Memories 💖</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    background:linear-gradient(180deg,#ffd6e7,#fff1d6,#dff6ff);
+    position:relative;
+}
+
+/* BACKGROUND EFFECT */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image:
+    radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size:25px 25px;
+    opacity:0.4;
+    z-index:-2;
+}
+
+.floating{
+    position:fixed;
+    font-size:2rem;
+    opacity:0.25;
+    animation:float 6s infinite ease-in-out;
+    z-index:-1;
+}
+
+.f1{top:10%;left:5%;}
+.f2{top:20%;right:10%;}
+.f3{bottom:15%;left:10%;}
+.f4{bottom:10%;right:8%;}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+    100%{transform:translateY(0);}
+}
+
+/* OPENING */
+
+.opening{
+    width:100%;
+    height:100vh;
+
+    background:
+    linear-gradient(rgba(255,255,255,0.35),rgba(255,255,255,0.35)),
+    url('https://drive.google.com/thumbnail?id=1Cv_tozLQkPalwJECiMkHYfa5AnHF_5SK&sz=w2000');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    position:fixed;
+    z-index:9999;
+
+    transition:1s;
+}
+
+.letter{
+    width:250px;
+    cursor:pointer;
+    animation:shake 1.5s infinite;
+    transition:0.4s;
+    filter:drop-shadow(0 10px 25px rgba(0,0,0,0.2));
+}
+
+.letter:hover{
+    transform:scale(1.08);
+}
+
+.click-text{
+    margin-top:25px;
+    font-size:1.8rem;
+    color:#ff4f8b;
+    font-family:'Patrick Hand',cursive;
+    animation:blink 1s infinite;
+}
+
+@keyframes shake{
+    0%{transform:rotate(0deg);}
+    25%{transform:rotate(3deg);}
+    50%{transform:rotate(-3deg);}
+    75%{transform:rotate(3deg);}
+    100%{transform:rotate(0deg);}
+}
+
+@keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0.4;}
+}
+
+/* MAIN */
+
+.main{
+    display:none;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px 10%;
+}
+
+.hero-content{
+    max-width:850px;
+    background:rgba(255,255,255,0.45);
+    backdrop-filter:blur(10px);
+    padding:50px;
+    border-radius:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    position:relative;
+}
+
+.hero-content::before{
+    content:'💌';
+    position:absolute;
+    top:-20px;
+    left:-20px;
+    font-size:3rem;
+}
+
+.hero-content::after{
+    content:'✨';
+    position:absolute;
+    bottom:-20px;
+    right:-20px;
+    font-size:3rem;
+}
+
+.hero h1{
+    font-size:4rem;
+    color:#ff4f8b;
+    margin-bottom:25px;
+    font-family:'Patrick Hand',cursive;
+}
+
+.hero p{
+    font-size:1.2rem;
+    line-height:2;
+    color:#555;
+}
+
+.scroll-text{
+    text-align:center;
+    margin-top:-50px;
+    margin-bottom:100px;
+    font-size:1.5rem;
+    color:#ff4f8b;
+    font-family:'Patrick Hand',cursive;
+    animation:float 2s infinite;
+}
+
+/* MEMORY */
+
+.memory-section{
+    padding:100px 10%;
+    display:flex;
+    flex-direction:column;
+    gap:140px;
+}
+
+.memory-card{
+    display:flex;
+    justify-content:center;
+}
+
+.polaroid{
+    background:white;
+    padding:15px 15px 70px;
+    border-radius:12px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+    transition:0.4s;
+    max-width:420px;
+    position:relative;
+}
+
+.polaroid:hover{
+    transform:scale(1.03) rotate(0deg);
+}
+
+.polaroid img{
+    width:100%;
+    border-radius:5px;
+    display:block;
+}
+
+.caption{
+    margin-top:20px;
+    text-align:center;
+    font-family:'Patrick Hand',cursive;
+    font-size:1.4rem;
+    color:#777;
+}
+
+/* RANDOM ROTATION */
+
+.memory-card:nth-child(odd) .polaroid{
+    transform:rotate(-3deg);
+}
+
+.memory-card:nth-child(even) .polaroid{
+    transform:rotate(3deg);
+}
+
+/* FOOTER */
+
+footer{
+    padding:60px 10%;
+    text-align:center;
+    color:#777;
+    font-family:'Patrick Hand',cursive;
+    font-size:1.4rem;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.8rem;
+}
+
+.hero-content{
+    padding:35px;
+}
+
+.polaroid{
+    max-width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="floating f1">💖</div>
+<div class="floating f2">🧸</div>
+<div class="floating f3">✨</div>
+<div class="floating f4">🌸</div>
+
+<!-- OPENING -->
+
+<div class="opening" id="opening">
+
+<img
+class="letter"
+id="letter"
+src="https://cdn-icons-png.flaticon.com/512/561/561127.png"
+>
+
+<div class="click-text">
+click me 💌
+</div>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="music" loop preload="auto">
+<source src="memories-clean.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MAIN -->
+
+<div class="main" id="main">
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+our memories ✨
+</h1>
+
+<p>
+terimakasih yaa udah jadi bagian dari cerita ini 💖
+semua tawa, cerita random, dan moment kecil kita bakal selalu jadi kenangan manis yang ga bakal lupa ✨
+</p>
+
+</div>
+
+</section>
+
+<div class="scroll-text">
+scroll ke bawah yaa 💌
+</div>
+
+<!-- MEMORY SECTION -->
+
+<section class="memory-section">
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=16z_mc2BY1BU49KRF9T15LT3XFcFZe7-v&sz=w2000">
+<div class="caption">hari hari paling seru ☁️</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1qq2I-0pgER40JdxawarFG1DbKqY0hdyA&sz=w2000">
+<div class="caption">ketawa random tiap hari 😭</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1lP73pLSo4iDgpD5lUPYQxZiq2CCHH904&sz=w2000">
+<div class="caption">ga nyangka waktunya cepet banget ✨</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1uXQZlA87IuokGhKLJDGjyd-fIC6_W1KG&sz=w2000">
+<div class="caption">semoga kita sukses semua ✨</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1SHUu-83Yp6gFnxh6GD0o7jXTul_ELu4O&sz=w2000">
+<div class="caption">moment kecil yang berarti 💌</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1KjhJ8b1L1A_D2lM5q90EVRV7a6hrdr-1&sz=w2000">
+<div class="caption">bakal kangen suasana ini 😭</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=16B8d9vRH-pa9DPKnBk18jQYtKpTLBaka&sz=w2000">
+<div class="caption">Bandung memories 💖</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1NU3Q_9KTU453Y5pxofqm5zO0DsV-Vi2J&sz=w2000">
+<div class="caption">cerita yang ga bakal balik ☁️</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1bBzbErR13cpphQuvl1mjPdGCecqA1xUM&sz=w2000">
+<div class="caption">masa masa paling lucu 😭</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=10UegnBKXev9-J5KqdIX6iZhCIz4QTn36&sz=w2000">
+<div class="caption">ternyata kita sejauh ini ya ✨</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1MC2dAL6Yi0SGapUsJKiVDHkb6uDYWWzX&sz=w2000">
+<div class="caption">thankyou for everything 💕</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1bl3HQtxIALSUmKB8EpQnIAucwWuJbBCB&sz=w2000">
+<div class="caption">kenangan manis Bandung 💌</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1Z6sXmKIrCyJGtzrlAGnbwMqNaHkQxDyW&sz=w2000">
+<div class="caption">semoga ga asing nanti 😭</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1mEpBWwKynVw5LEdPbA8dTSngvjhe2RnC&sz=w2000">
+<div class="caption">our beautiful memories ✨</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1ymrEtM-LoqcA0AWeqMDxFyqSwkOskDGq&sz=w2000">
+<div class="caption">makasih udah hadir 💖</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=11QcXo9F0y2uhBrH_wqDsoEhEjhaZEd3g&sz=w2000">
+<div class="caption">another sweet memories 💖</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1xKNF4EDPC3TI6DUL81LH2ZNRc6m6Zs0R&sz=w2000">
+<div class="caption">moment yang ga bakal balik 😭</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1GPSgq5_oXeNIJrAkiKRubtRbzyDzq_Wj&sz=w2000">
+<div class="caption">thankyou for everything 💌</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1ymO1qfNWL4qpB6X_-vUQsvTHQASIgtBu&sz=w2000">
+<div class="caption">the best chapter ✨</div>
+</div>
+</div>
+
+<div class="memory-card">
+<div class="polaroid">
+<img src="https://drive.google.com/thumbnail?id=1Cv_tozLQkPalwJECiMkHYfa5AnHF_5SK&sz=w2000">
+<div class="caption">the end but not really the end ☁️</div>
+</div>
+</div>
+
+</section>
+
+<footer>
+dibuat dengan penuh kenangan 💖
+</footer>
+
+</div>
+
+<script>
+
+const letter = document.getElementById('letter');
+const music = document.getElementById('music');
+const opening = document.getElementById('opening');
+const main = document.getElementById('main');
+
+letter.addEventListener('click', () => {
+
+    music.volume = 0.5;
+
+    music.play().catch((err)=>{
+        console.log(err);
+    });
+
+    opening.style.opacity = "0";
+
+    setTimeout(() => {
+
+        opening.style.display = "none";
+        main.style.display = "block";
+
+    }, 800);
+
+});
+
+</script>
+
+</body>
+</html>
